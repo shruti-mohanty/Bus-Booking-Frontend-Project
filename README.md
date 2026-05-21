@@ -1,27 +1,92 @@
-# BusBooking2
+🚍 Bus Booking System
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.21.
+A modern and responsive Bus Booking Web Application built using Angular, TypeScript, Bootstrap, and Local Storage.
+This project allows users to search buses, view available seats, book tickets, register/login, and manage seat bookings dynamically just like real-world platforms such as RedBus.
 
-## Development server
+✨ Features
+🔍 Bus Search
+Search buses by:
+From Location
+To Location
+Travel Date
+Dynamic bus filtering using fake JSON data.
+🚌 Bus Listing
+Displays:
+Bus Name
+Bus Type
+Departure & Arrival Time
+Duration
+Ratings
+Ticket Price
+Available Seats
+💺 Smart Seat Booking
+Interactive seat selection UI.
+Booked seats become disabled automatically.
+Real-time seat availability update.
+Dynamic passenger forms generated according to selected seats.
+👤 User Authentication UI
+Login & Register modal popup.
+User data stored using Local Storage.
+Logged-in user shown in navbar.
+Logout functionality included.
+📦 Local Storage Integration
+Stores:
+User Data
+Booking Data
+Selected Seats
+Data persists even after page refresh.
+🎨 Responsive UI
+Modern RedBus-inspired design.
+Bootstrap responsive layout.
+Mobile-friendly interface.
+Beautiful modals and cards.
+🛠️ Technologies Used
+Angular
+TypeScript
+HTML5
+CSS3
+Bootstrap 5
+RxJS
+Local Storage
+📂 Project Modules
+🔹 Search Module
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Search buses based on location and date.
 
-## Code scaffolding
+🔹 Booking Module
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Select seats and confirm bookings.
 
-## Build
+🔹 Authentication Module
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Register/Login UI using Local Storage.
 
-## Running unit tests
+🔹 Service Layer
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Centralized data management using Angular Services.
 
-## Running end-to-end tests
+🚀 Future Enhancements
+Payment Gateway Integration
+Real Backend API
+JWT Authentication
+Booking History
+Ticket PDF Download
+Email Notifications
+Cancel Booking Feature
+Admin Dashboard
+📸 Project Highlights
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+✅ Dynamic Seat Booking
+✅ Real-time Seat Availability
+✅ Angular Standalone Components
+✅ Responsive Bootstrap Design
+✅ Local Storage Based Booking System
+✅ RedBus Inspired UI
 
-## Further help
+👩‍💻 Developed By
+Shruti Mohanty
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+Live Project Link: bus-booking2.netlify.app
+
+Tech | Angular Frontend Developer
