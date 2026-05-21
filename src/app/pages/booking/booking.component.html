@@ -1,0 +1,387 @@
+<section id="booking-form" class="my-4">
+
+  <div class="container mt-5">
+
+    <!-- ========================= -->
+    <!-- BUS DETAILS -->
+    <!-- ========================= -->
+
+    <ng-container *ngIf="busData">
+
+      <div class="row align-items-center text-center mb-5">
+
+        <!-- Bus Name -->
+        <div class="col-md-3">
+
+          <h3 class="text-danger fw-bold">
+
+            {{busData.busName}}
+
+          </h3>
+
+          <p class="text-muted">
+
+            {{busData.busType}}
+
+          </p>
+
+        </div>
+
+        <!-- Departure -->
+        <div class="col-md-2">
+
+          <h4>
+
+            {{busData.departureTime}}
+
+          </h4>
+
+          <small class="text-muted">
+
+            Departure
+
+          </small>
+
+        </div>
+
+        <!-- Duration -->
+        <div class="col-md-2">
+
+          <h4>
+
+            {{busData.duration}}
+
+          </h4>
+
+          <small class="text-muted">
+
+            Duration
+
+          </small>
+
+        </div>
+
+        <!-- Arrival -->
+        <div class="col-md-2">
+
+          <h4>
+
+            {{busData.arrivalTime}}
+
+          </h4>
+
+          <small class="text-muted">
+
+            Arrival
+
+          </small>
+
+        </div>
+
+        <!-- Price -->
+        <div class="col-md-3">
+
+          <h4 class="text-success fw-bold">
+
+            ₹ {{busData.price}}
+
+          </h4>
+
+          <small>
+
+            {{getAvailableSeatsCount()}} Seats Available
+
+          </small>
+
+        </div>
+
+      </div>
+
+    </ng-container>
+
+    <!-- ========================= -->
+    <!-- MAIN SECTION -->
+    <!-- ========================= -->
+
+    <div class="row">
+
+      <!-- ========================= -->
+      <!-- SEAT LAYOUT -->
+      <!-- ========================= -->
+
+      <div class="col-md-4">
+
+        <div class="border rounded shadow p-4">
+
+          <!-- Driver -->
+
+          <div class="row mb-4">
+
+            <div class="col-12 text-end">
+
+              <img src="https://cdn-icons-png.flaticon.com/512/2907/2907720.png" alt="Driver Icon" class="driver"
+                width="60">
+
+            </div>
+
+          </div>
+
+          <!-- Seats -->
+
+          <div class="row">
+
+            <ng-container *ngFor="let seat of seats">
+
+              <div class="col-3 mb-3">
+
+                <div class="seat text-center" [class.selected]="selectedSeats.includes(seat.seatNo)"
+                  [class.booked]="bookedSeats.includes(seat.seatNo)" (click)="selectSeat(seat.seatNo)">
+
+                  {{seat.seatNo}}
+
+                </div>
+
+              </div>
+
+            </ng-container>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- ========================= -->
+      <!-- BOOKING FORM -->
+      <!-- ========================= -->
+
+      <div class="col-md-8">
+
+        <div class="card shadow border-0 p-4">
+
+          <h3 class="text-danger fw-bold mb-4">
+
+            Booking Details
+
+          </h3>
+
+          <ng-container *ngFor="let passenger of passengerArray">
+
+            <div class="card border-0 shadow-sm p-3 mb-4">
+
+              <h5 class="text-danger fw-bold mb-3">
+
+                Passenger Details
+                (Seat {{passenger.seatNo}})
+
+              </h5>
+
+              <!-- Passenger Name -->
+
+              <div class="mb-3">
+
+                <label class="form-label fw-bold">
+
+                  Passenger Name
+
+                </label>
+
+                <input type="text" class="form-control" [(ngModel)]="passenger.passengerName">
+
+              </div>
+
+              <!-- Age -->
+
+              <div class="mb-3">
+
+                <label class="form-label fw-bold">
+
+                  Age
+
+                </label>
+
+                <input type="number" class="form-control" [(ngModel)]="passenger.age">
+
+              </div>
+
+              <!-- Gender -->
+
+              <div class="mb-3">
+
+                <label class="form-label fw-bold">
+
+                  Gender
+
+                </label>
+
+                <select class="form-select" [(ngModel)]="passenger.gender">
+
+                  <option value="Male">
+
+                    Male
+
+                  </option>
+
+                  <option value="Female">
+
+                    Female
+
+                  </option>
+
+                </select>
+
+              </div>
+
+            </div>
+
+          </ng-container>
+
+          <!-- Selected Seats -->
+
+          <div class="card bg-light border-0 p-3 mb-4">
+
+            <h5 class="text-danger fw-bold">
+
+              Selected Seats
+
+            </h5>
+
+            <h4>
+
+              {{selectedSeats}}
+
+            </h4>
+
+          </div>
+
+          <!-- ========================= -->
+          <!-- BUS INFORMATION -->
+          <!-- ========================= -->
+
+          <ng-container *ngIf="busData">
+
+            <div class="card border-0 bg-light p-3 mb-4">
+
+              <h5 class="text-danger fw-bold mb-3">
+
+                Bus Information
+
+              </h5>
+
+              <div class="row">
+
+                <div class="col-md-6">
+
+                  <p>
+
+                    <strong>Bus Name:</strong>
+
+                    {{busData.busName}}
+
+                  </p>
+
+                  <p>
+
+                    <strong>Bus Type:</strong>
+
+                    {{busData.busType}}
+
+                  </p>
+
+                  <p>
+
+                    <strong>Travel Date:</strong>
+
+                    {{busData.travelDate}}
+
+                  </p>
+
+                </div>
+
+                <div class="col-md-6">
+
+                  <p>
+
+                    <strong>Departure:</strong>
+
+                    {{busData.departureTime}}
+
+                  </p>
+
+                  <p>
+
+                    <strong>Arrival:</strong>
+
+                    {{busData.arrivalTime}}
+
+                  </p>
+
+                  <p>
+
+                    <strong>Duration:</strong>
+
+                    {{busData.duration}}
+
+                  </p>
+
+                </div>
+
+              </div>
+
+              <hr>
+
+              <div class="row text-center">
+
+                <div class="col-md-4">
+
+                  <h5 class="text-success fw-bold">
+
+                    ₹ {{busData.price}}
+
+                  </h5>
+
+                </div>
+
+                <div class="col-md-4">
+
+                  <h5>
+
+                    {{busData.rating}} ⭐
+
+                  </h5>
+
+                </div>
+
+                <div class="col-md-4">
+
+                  <h5>
+
+                    {{busData.totalRatings}} Ratings
+
+                  </h5>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </ng-container>
+
+          <!-- Confirm Button -->
+
+          <button class="btn btn-danger px-5" (click)="confirmBooking()">
+
+            CONFIRM BOOKING
+
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>

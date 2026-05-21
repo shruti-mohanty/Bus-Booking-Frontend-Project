@@ -1,0 +1,52 @@
+.seat {
+
+  width: 55px;
+  height: 55px;
+
+  background-color: #e9ecef;
+
+  border-radius: 10px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+
+  font-weight: bold;
+
+  border: 2px solid #ccc;
+
+  transition: 0.3s;
+
+}
+
+.seat:hover {
+
+  background-color: #dc3545;
+  color: white;
+
+}
+
+.selected {
+
+  background-color: #3583dc !important;
+  color: white;
+
+}
+
+.driver {
+
+  transform: rotate(90deg);
+
+}
+
+.booked {
+
+  background-color: gray !important;
+
+  color: white;
+
+  cursor: not-allowed;
+
+}

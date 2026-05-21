@@ -1,0 +1,259 @@
+<div class="container">
+
+  <!-- Header -->
+  <header class="my-4">
+    <h1 class="text-center text-danger fw-bold">
+      Bus Booking System
+    </h1>
+  </header>
+
+  <!-- Search Form -->
+  <section>
+
+    <div class="container mt-5 d-flex justify-content-center">
+
+      <form class="search-form d-flex align-items-center shadow-lg p-4 rounded bg-danger w-100">
+
+        <div class="row w-100 text-white">
+
+          <!-- From Location -->
+          <div class="col-md-3 d-flex align-items-center mb-2">
+
+            <div class="input-group">
+
+              <span class="input-group-text">
+                <i class="bi bi-bus-front"></i>
+              </span>
+
+              <select
+                class="form-select"
+                name="fromLocation"
+                [(ngModel)]="searchObj.fromLocation">
+
+                <option value="">
+                  Select From Location
+                </option>
+
+                <option *ngFor="let item of locations$ | async" [value]="item.locationId">
+                    {{ item.locationName }}
+                  </option>
+
+              </select>
+
+            </div>
+
+          </div>
+
+          <!-- Arrow -->
+          <div class="col-md-1 text-center d-flex align-items-center justify-content-center mb-2">
+
+            <i class="bi bi-arrow-left-right fs-3"></i>
+
+          </div>
+
+          <!-- To Location -->
+          <div class="col-md-3 d-flex align-items-center mb-2">
+
+            <div class="input-group">
+
+              <span class="input-group-text">
+                <i class="bi bi-bus-front"></i>
+              </span>
+
+              <select
+                class="form-select"
+                name="toLocation"
+                [(ngModel)]="searchObj.toLocation">
+
+                <option value="">
+                  Select To Location
+                </option>
+
+                <option *ngFor="let item of locations$ | async" [value]="item.locationId">
+                    {{ item.locationName }}
+                  </option>
+
+              </select>
+
+            </div>
+
+          </div>
+
+          <!-- Date -->
+          <div class="col-md-3 d-flex align-items-center mb-2">
+
+            <div class="input-group">
+
+              <span class="input-group-text">
+                <i class="bi bi-calendar"></i>
+              </span>
+
+              <input
+                type="date"
+                class="form-control"
+                name="travelDate"
+                [(ngModel)]="searchObj.travelDate">
+
+            </div>
+
+          </div>
+
+          <!-- Search Button -->
+          <div class="col-md-2 text-center mb-2">
+
+            <button
+              type="button"
+              (click)="onSearch()"
+              class="btn btn-light text-danger fw-bold w-100">
+
+              SEARCH BUSES
+
+            </button>
+
+          </div>
+
+        </div>
+
+      </form>
+
+    </div>
+
+  </section>
+
+  <!-- Bus List -->
+<section id="buses-list" class="my-5">
+
+  <h2 class="mb-4 fw-bold">
+    Available Buses
+  </h2>
+
+  <ng-container *ngFor="let item of busList">
+
+  <div class="card mb-4 shadow border-0 p-4">
+
+    <div class="row align-items-center text-center">
+
+      <!-- Bus Name -->
+      <div class="col-md-3">
+
+        <h4 class="text-danger fw-bold">
+          {{item.busName}}
+        </h4>
+
+        <p class="text-muted">
+          {{item.busType}}
+        </p>
+
+      </div>
+
+      <!-- Departure -->
+      <div class="col-md-2">
+
+        <h5>
+          {{item.departureTime}}
+        </h5>
+
+        <p class="text-muted">
+          Departure
+        </p>
+
+      </div>
+
+      <!-- Duration -->
+      <div class="col-md-1">
+
+        <h5>
+          {{item.duration}}
+        </h5>
+
+        <p class="text-muted">
+          Duration
+        </p>
+
+      </div>
+
+      <!-- Arrival -->
+      <div class="col-md-2">
+
+        <h5>
+          {{item.arrivalTime}}
+        </h5>
+
+        <p class="text-muted">
+          Arrival
+        </p>
+
+        <small class="text-danger">
+          {{item.travelDate}}
+        </small>
+
+      </div>
+
+      <!-- Rating -->
+      <div class="col-md-1">
+
+        <div class="bg-success text-white rounded px-2 py-1">
+
+          {{item.rating}} ⭐
+
+        </div>
+
+        <small>
+
+          {{item.totalRatings}} Ratings
+
+        </small>
+
+      </div>
+
+      <!-- Price -->
+      <div class="col-md-1">
+
+        <h5 class="text-success">
+
+          ₹ {{item.price}}
+
+        </h5>
+
+        <small>
+
+          {{getAvailableSeats(item.busId)}} Seats Left
+
+        </small>
+
+      </div>
+
+      <!-- Button -->
+      <div class="col-md-2">
+
+        <button class="btn btn-danger px-4" [routerLink]="['/booking', item.busId]">
+  
+          BOOK SEATS
+
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  </ng-container>
+
+  <ng-container *ngIf="busList.length === 0">
+
+  <div class="text-center mt-5">
+
+    <h4 class="text-muted">
+
+      No buses found
+
+    </h4>
+
+  </div>
+
+  </ng-container>
+
+</section>
+
+</div>
